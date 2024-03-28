@@ -1,0 +1,23 @@
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage{float}
+\newcommand{\obc}{\text{ob}\thinspace\mathcal{C}}
+
+\memoto{Idris}
+\memosubject{Joy of Abstraction}
+\memodate{2024.03.26}
+\newenvironment{proofitem}
+{ \begin{itemize}[label={}, leftmargin=2mm, itemsep=0.5mm] }
+{\end{itemize}}
+
+\newenvironment{ttta}{
+   \par\vspace{0.5cm}
+   \noindent\hrulefill
+   \par\vspace{0.2cm}
+   \textbf{Question:}
+   \ignorespaces
+}
+{\par\vspace{0.0cm}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[subsection] % Can be changed to other levels

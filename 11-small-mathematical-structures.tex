@@ -1,0 +1,180 @@
+\section{Small Mathematical Structures}
+\subsection{Monoids}
+\begin{definition}
+    A category is called discrete if it has no arrows except identity arrows.
+\end{definition}
+In this way, categories are generalizations of sets.
+\begin{definition}
+    A category with only one object is called a monoid.
+\end{definition}
+\begin{definition}
+    A monoid is a set $M$ equipped with an identity $1$ and a unital and associative
+binary operation $\circ$. The monoid is sometimes written fully as $(M, \circ,
+1)$.
+\end{definition}
+\begin{align*}
+    \forall m \in& M, 1\circ m = m = m \circ 1&&\text{unital}\\
+    \forall a, b, c \in& M, (a\circ b)\circ c = a \circ (b \circ
+    c)&&\text{associative}
+\end{align*}
+
+\begin{ttta}
+Translate between the set-theory definition of monoid and the category-theory
+definition of monoid.
+\end{ttta}
+\begin{proofitem}
+    \item Let $M$ be a set of monoidal elements.
+    \item Let $\mathcal{C}_\text{M}$ be a monoid category.
+    \item For each $m\in M$, there is a corresponding arrow $a\in
+        \mathcal{C}_\text{M}$.
+    \item The set $M$ has a binary closed operation $\circ$.
+    \item $M$ is equippied with an identity element $1\in M$, such that for
+        $\forall m \in M, m\circ 1 = m = 1 \circ m$. This binary operation
+        corresponds to the identity arrow $1_m$ in $\mathcal{C}_\text{M}$. For
+        all arrows $a\in\mathcal{C}_\text{M}$, pre or post-composing $a$ with
+        $1$ will yield $a$, thus proving the identity arrow for all arrows $a$.
+    \item Because $\circ$ is associative in $M$, then $\forall x, y, z \in M,
+        (x\circ y)\circ z = x\circ(y\circ z)$. Correspondingly, for all $a, b, c\in
+        \mathcal{C}_\text{M}$ the morphism $\circ$ will associate such that
+        $(a\circ b)\circ c= a\circ(b\circ c)$.
+\end{proofitem}
+\begin{table}
+    \centering
+    \begin{tabular}{ c|ccc }
+    \hline
+    & Set Theory & & Category Theory \\ \hline
+    & & & "dummy" object \\
+    Data & objects & $\rightarrow$ & arrows \\ \hline
+    & identity object & $\rightarrow$ & identity arrow \\
+    Structure & binary operation & $\rightarrow$ & composition \\ \hline
+    & unitality & $\rightarrow$ & unitality \\
+    Properties & associativity& $\rightarrow$ & associativity
+    \\\hline
+    \end{tabular}
+    \caption{Monoid in set theory v. category-theory}
+\end{table}
+
+\begin{table}
+\centering
+\caption{Cayley Table}
+\begin{tabular}{c|cccc}
+ $\circ$ & $1$ & $f$ & $f^2$ & $f^3$ \\
+ \hline
+ $1$ & $1$ & $f$ & $f^2$ & $f^3$ \\
+ $f$ & $f$ & $f^2$ & $f^3$ & $1$ \\
+ $f^2$ & $f^2$ & $f^3$ & $1$ & $f^2$ \\
+ $f^3$ & $f^3$ & $1$ & $f^2$ & $f^2$ \\
+\end{tabular}
+\caption{Looks like modular arithmetic.}
+\end{table}
+\begin{ttta}
+Find an inverse for each element of $\mathbb{Z}_4$ under addition. So for each $a \in
+\mathbb{Z}_4$, find $b \in \mathbb{Z}_4$ such that $a + b \equiv 0 (\mod 4)$.
+(The condition for b + a follows by commutativity.) The elements here are 0, 1,
+2, 3. What about $\mathbb{Z}_n$ in general?
+\end{ttta}
+\begin{proofitem}
+\item To find the inverse of some $a\in\mathbb{Z}_4$, we must find the
+    $b\in\mathbb{Z}_4$ such that $a+b\equiv\bmod 4$.
+\item One way to do this for a small $\mathbb{Z}_n$ is with a cayley table.
+\item By looking at the addition cayley table for $\mathbb{Z}_4$, we can see that
+    \begin{align}
+        0+0=&0+0=0\\
+        1+3=&3+1=0\\
+        2+2=&2+2=0
+    \end{align}
+    In general, for any $\mathbb{Z}_n$, the inverse of some $a\in\mathbb{Z}_n$
+    is $n-a$, such that $n-a+a=0$.
+\begin{table}
+\centering
+\begin{tabular}{c|cccc}
+ $\circ$ & $0$ & $1$ & $2$ & $3$ \\
+ \hline
+ $0$ & $0$ & $1$ & $2$ & $3$ \\
+ $1$ & $1$ & $2$ & $3$ & $0$ \\
+ $2$ & $2$ & $3$ & $0$ & $2$ \\
+ $3$ & $3$ & $0$ & $2$ & $2$ \\
+\end{tabular}
+\caption{Cayley table for $\mathbb{Z}_4$}
+\end{table}
+\end{proofitem}
+
+\subsection{Groups}
+\begin{definition}
+A group is a monoid in which every element has an inverse.
+\end{definition}
+
+\begin{ttta}
+Produce the non-categorical definition of a group.
+\end{ttta}
+A group is a monoid where every element has an inverse. Therefore a group has
+monoidal properties unitality and associavitity, and the additional inverse
+property.
+\begin{align*}
+    \forall m \in& M, 1\circ m = m = m \circ 1&&\text{unital}\\
+    \forall a, b, c \in& M, (a\circ b)\circ c = a \circ (b \circ c)&&\text{associative}\\
+    \forall a\in& M \exists B,  a\circ b = 1 &&\text{inverse}
+\end{align*}
+
+\begin{ttta}
+Can you organize this into data, structure and properties, and then see
+how the structure corresponds to the properties for an equivalence relation?
+\end{ttta}
+See Table \ref{tbl:group}.
+\begin{table}
+    \centering
+    \begin{tabular}{ c|ccc }
+    \hline
+    & Set Theory & & Category Theory \\ \hline
+    & & & "dummy" object \\
+    Data & objects & $\rightarrow$ & arrows \\ \hline
+    & identity object & $\rightarrow$ & identity arrow \\
+    & binary operation & $\rightarrow$ & composition \\
+    Structure & inverse object & $\rightarrow$ & inverse arrow \\ \hline
+    & unitality & $\rightarrow$ & unitality \\
+    Properties & associativity& $\rightarrow$ & associativity
+    \\\hline
+    \end{tabular}
+    \caption{Group in set theory v. category-theory}
+    \label{tbl:group}
+\end{table}
+\begin{ttta}
+Try filling in these multiplication tables, in the context of the integers
+mod 8 and the integers mod 10:
+The numbers $1, 3, 5, 7\in \mathbb{Z}_8$, see Table \ref{tbl:z8}.
+The numbers $1, 3, 7, 9\in \mathbb{Z}_{10}$, see Table \ref{tbl:z10}.
+\end{ttta}
+\begin{table}
+\centering
+\begin{tabular}{c|cccc}
+ $\times $ & $1$ & $3$ & $5$ & $7$ \\
+ \hline
+ $1$ & $1$ & $3$ & $5$ & $7$ \\
+ $3$ & $3$ & $1$ & $7$ & $5$ \\
+ $5$ & $5$ & $7$ & $1$ & $3$ \\
+ $7$ & $7$ & $5$ & $3$ & $1$ \\
+\end{tabular}
+\caption{$\mathbb{Z}_8$}
+\label{tbl:z8}
+\end{table}
+\begin{table}
+\centering
+\begin{tabular}{c|cccc}
+ $\times $ & $1$ & $3$ & $7$ & $9$ \\
+ \hline
+ $1$ & $1$ & $3$ & $7$ & $9$ \\
+ $3$ & $3$ & $9$ & $1$ & $7$ \\
+ $7$ & $7$ & $1$ & $9$ & $3$ \\
+ $9$ & $9$ & $7$ & $3$ & $1$ \\
+\end{tabular}
+\caption{$\mathbb{Z}_{10}$}
+\label{tbl:z10}
+\end{table}
+
+\begin{ttta}
+Can you make a definition of a group directly as a category satisfying some conditions?
+\end{ttta}
+A group extends a monoid, so let's start with the definition of the monoidal
+category---a category where there is only object. From there we must add the
+concept of an inverse, so we'll say that for every arrow in $a \in \mathcal{C}$
+there exists an arrow $b\in\mathcal{C}| a\cdot b = b\cdot a = 1_a$.

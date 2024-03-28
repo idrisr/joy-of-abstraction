@@ -1,0 +1,90 @@
+\section{Ordered Sets}
+\begin{definition}
+A totally ordered set is a set $S$ plus a relation $R$ on the set (called a total
+order) that satisfies the conditions for a partial order plus an additional
+condition known as the comparability condition. A relation $\geq$ is a total order
+on a set $S$ ($\geq$ totally orders $S$) if the following properties hold.
+\setcounter{equation}{0}
+\begin{align}
+    a\leq a, \forall a \in S&&\text{reflexive}\\
+    a\leq b \land b\leq a \implies a=b&&\text{antisymmetric}\\
+    a\leq b \land b\leq c \implies a\leq c&&\text{transitive}\\
+    \forall a,b \in S, a\leq b \lor b\leq a&&\text{trichotomy}
+\end{align}
+\end{definition}
+\subsection{Totally Ordered Set}
+A totally ordered set defines a category $\mathcal{C}$ where $\forall a, b \in
+\obc{}$, there is exactly one arrow between them.
+\begin{ttta}
+Let's check if this is true for the category of $\mathbb{N}$ with the relation $\geq$.
+\end{ttta}
+\begin{proofitem}
+\item Let $T$ be a totally ordered set.
+\item Let $R\subseteq T\times T$ be a total order on $T$.
+\item Let $\mathcal{C}$ be a category, where each $t\in T$ is an
+    object $o\in\mathcal{C}$.
+\item For any two distinct objects $a, b\in\obc{}$, there will be one arrow
+    between $a$ and $b$ because $T$ is antisymmetric, and therefore if $x, y \in
+    T$, only one of $(x, y)$ and $(y, x)$ can be in $T$.
+\item For any object $a\in\obc{}$, there will exist an identity arrow because
+    $T$ is reflexive.
+\item Therefore we have shown there is only arrow between objects $a, b\in
+    \obc{}$ when $a=b$ and when $a\neq b$.
+\end{proofitem}
+
+\begin{ttta}
+How many ways can you think of for a category to fail to be an
+ordered set?
+\end{ttta}
+\begin{proofitem}
+\item For a category to be an ordered set there must be one arrow between any
+    pair of objects. Therefore a category can fail to be a totally ordered set
+    if there are 0 arrows between two objects, or if there is more than 1 arrow
+    between two objects.
+\end{proofitem}
+
+\begin{ttta}
+In Chapter 5 we moved from lattices of factors to lattices of subsets.
+Can you make a formal definition of a category of subsets of S (for some fixed
+set S, based on \S 5.6? Can you then show that it is a poset?
+\end{ttta}
+\begin{tikzpicture}[->, >=stealth, thick]
+\node (1) at (2,0) {$\varnothing$};
+\node (2) at (1,1) {$\set{a}$};
+\node (3) at (2,1) {$\set{b}$};
+\node (5) at (3,1) {$\set{c}$};
+\node (6) at (1,2) {$\set{a, b}$};
+\node (10) at (2,2) {$\set{a, c}$};
+\node (15) at (3,2) {$\set{b, c}$};
+\node (30) at (2,3) {$\set{a, b, c}$};
+\draw (1) -- (2);
+\draw (1) -- (3);
+\draw (1) -- (5);
+\draw (2) -- (6);
+\draw (2) -- (10);
+\draw (3) -- (6);
+\draw (3) -- (15);
+\draw (5) -- (10);
+\draw (5) -- (15);
+\draw (6) -- (30);
+\draw (10) -- (30);
+\draw (15) -- (30);
+\end{tikzpicture}
+\begin{proofitem}
+\item The subsets of $S$ are represented be the powerset $\mathscr{P}(S)$.
+\item Let $\mathcal{C}_\text{subset}$ be the category of subsets for a set $S$.
+\item The objects $\obc{}$ of $\mathcal{C}_\text{subset}$ are the elements of
+    the powerset $\mathscr{P}(S)$.
+\item An arrow exists between two objects $a, b \in \mathcal{C}_\text{subset}$
+    if $a\subseteq b$.
+\item For $\mathcal{C}_\text{subset}$ to be a poset, it must have the following
+    properties: reflexivity, transitivity, and anti-symmetry.
+\setcounter{equation}{0}
+\begin{align}
+    A \in \mathscr{P}(S) \implies A\subseteq A &&\text{reflexivity}\\
+    A,B \in \mathscr{P}(S), A\subseteq B \land B \subseteq A \implies A=B  &&\text{antisymmetry}\\
+    A,B,C \in \mathscr{P}(S), A \subseteq B \land B \subseteq C \implies A
+    \subseteq C&&\text{transitivity}
+\end{align}
+\item Thus we have shown that $\mathcal{C}_\text{subset}$ is a poset.
+\end{proofitem}

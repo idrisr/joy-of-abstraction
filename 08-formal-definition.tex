@@ -1,0 +1,20 @@
+\setcounter{section}{7}
+\section{Formal Definition of a Category}
+\begin{enumerate}
+    \item Data
+        \subitem Objects: a collection $\obc{}$ of objects
+        \subitem Arrows: for objects $a, b\in \obc{}$, a collection
+        $\mathcal{C}(a, b)$ of arrows $a \overset{f}{\rightarrow} b$
+    \item Structure
+        \subitem Identities: for any object $a\in\obc{}$ an identity arrow
+        $a \overset{1_a}{\rightarrow} b$
+        \subitem Composition: for any arrows
+        $a \overset{f}{\rightarrow} b \overset{g}{\rightarrow} c$, a composite arrow
+        $a \overset{g\circ f}{\rightarrow} c$
+    \item Properties
+        \subitem Unit laws: for any arrow $a \overset{f}{\rightarrow} b, f\circ
+        1_a = f = 1_b \circ f$.
+        \subitem Associativity:
+        $a \overset{f}{\rightarrow} b \overset{g}{\rightarrow} c
+        \overset{h}{\rightarrow} d, (h\circ g)\circ f=h\circ (g \circ f)$.
+\end{enumerate}
