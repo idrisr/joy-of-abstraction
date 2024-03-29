@@ -69,29 +69,20 @@ category?
     $A\in M$, and each arrow $\times$ is a mapping $A,B \in M, \times:
     A\rightarrow B$.
 \item Let $\circ$ be the monoidal operation of an object
-    $A\in\mathcal{C}_\text{mon}$, and let $\times$
+    $A\in\mathcal{C}_\text{mon}$, and let $\ast$
     be the mapping between objects of the category $\mathcal{C}_\text{mon}$.
+\item Let $f, g$ be composable functions, ie they are arrows for a particular
+    object.
 \item To show that monoids and their homomorphisms form a cateogry we must show
     the properties of unitality and associativity.
-\begin{figure}
-   \centering
-   \includegraphics[width=0.9\textwidth]{imgs/13-01-monoid-homomorphism.png}
-   \caption{$\circ$ for function composition,$\times$ for binary monoid
-   operation}
-\end{figure}
 \begin{align}
-    f =& 1\circ f &&\text{left unit}\\
-    \times(1\circ f) =& \times(1) \circ \times(f) &&\text{left unit}\\
-    \times(f) =& 1 \circ \times(f) &&\text{left unit}\\
-    \times(f) =& \times(f) &&\text{left unit}\\
-    f =& f\circ 1 &&\text{right unit}\\
-    \times (f\circ 1) =& \times(f) \circ \times(1) &&\text{right unit}\\
-    \times (f) =& \times(f) \circ 1 &&\text{right unit}\\
-    \times (f) =& \times(f) &&\text{right unit}\\
-    f\circ (g\circ h)=& (f\circ g) \circ h &&\text{associativity}\\
-    \times(f\circ (g\circ h))=& \times(f\circ g) \circ \times(h) &&\text{associativity}\\
-    \times(f\circ (g\circ h))(x)=& \times(f\circ g) \circ \times(h)(x) &&\text{associativity}\\
-    \times(f\circ (g(h(x))))=& \times(f\circ g) \circ \times h(x) &&\text{associativity}\\
-    \times(f(g(h(x))))=& \times(f\circ g) \circ \times h(x) &&\text{associativity}\\
+(g\circ f)(x\ast y)&= g(f(x\ast y)) &&\text{by definition of }\circ\\
+&= g(f(x)\ast f(y)) &&\text{as f respects }\ast\\
+&= g(f(x))\ast g(f(y)) &&\text{as g respects }\ast\\
+&= (g\circ f)(x)\ast (g\circ f)(y) &&\text{by definition of }\circ\\
+(g\circ f)(1)&= g(f(1)) &&\text{by definition of }\circ\\
+&= g(1) &&\text{as f respects }1\\
+&= 1 &&\text{as g respects }1
 \end{align}
 \end{proofitem}
+\input{monoid}

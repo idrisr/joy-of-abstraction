@@ -34,7 +34,7 @@
     in {
       packages.${system}.default = tex;
       devShells.${system} = {
-        default = pkgs.mkShell { buildInputs = [ tex ]; };
+        default = pkgs.mkShell { buildInputs = [ tex pkgs.tikzit ]; };
       };
       apps.${system} = {
         clean = {
