@@ -64,25 +64,49 @@ What do we need to check to show that monoids and their homomorphisms form a
 category?
 \end{ttta}
 \begin{proofitem}
-\item Let $M$ be the set of monoids, where each element is a monoid.
+\item Let $M$ be the set of monoids, $M_A, M_B, M_C, \ldots, \in M$.
 \item Let $\mathcal{C}_\text{mon}$ be a category where each object is a monoid
     $A\in M$, and each arrow $\times$ is a mapping $A,B \in M, \times:
     A\rightarrow B$.
-\item Let $\circ$ be the monoidal operation of an object
-    $A\in\mathcal{C}_\text{mon}$, and let $\ast$
-    be the mapping between objects of the category $\mathcal{C}_\text{mon}$.
-\item Let $f, g$ be composable functions, ie they are arrows for a particular
-    object.
+\item Let $f, g$ be composable functions, ie they are arrows between objects.
+\item Let $\circ$ be a binary composition operation on arrows.
+\item Let $\ast$ be a binary composition operation on monoidal elements.
 \item To show that monoids and their homomorphisms form a cateogry we must show
     the properties of unitality and associativity.
+\setcounter{equation}{0}
 \begin{align}
-(g\circ f)(x\ast y)&= g(f(x\ast y)) &&\text{by definition of }\circ\\
-&= g(f(x)\ast f(y)) &&\text{as f respects }\ast\\
-&= g(f(x))\ast g(f(y)) &&\text{as g respects }\ast\\
-&= (g\circ f)(x)\ast (g\circ f)(y) &&\text{by definition of }\circ\\
-(g\circ f)(1)&= g(f(1)) &&\text{by definition of }\circ\\
-&= g(1) &&\text{as f respects }1\\
-&= 1 &&\text{as g respects }1
+    (g\circ f)(x\ast y) &= g(f(x\ast y)) && \text{def. of }\circ\\
+    &= g(f(x) \ast f(y)) && f\text{ respects }\ast\\
+    &= g(f(x)) \ast g(f(y)) && g\text{ respects }\ast\\
+    &= (g\circ f)(x) \ast (g\circ f)(y) && \text{def. of }\circ\\
+    (g\circ f)(1)&= g(f(1)) && \text{def. of }\circ\\
+    &= g(1) && f \text{ respects }1\\
+    &= 1 && g \text{ respects }1
 \end{align}
 \end{proofitem}
 \input{monoid}
+\begin{ttta}
+Define group homomorphism as a function respecting the group structure. When
+dealing with groups, it is redundant to ask for the identity to be preserved.
+It’s also redundant to ask for the inverses to be preserved. Prove this.
+\end{ttta}
+\begin{proofitem}
+\item The properties needed for a group are identity, inverse, and
+    associativity. We can show that if there exists a function $f$ which is a
+    group homomorphism, then we get inverse and identity for freebeez.
+\item Suppose $f: G \rightarrow H$ is a homomorphism between groups $G$ and $H$. Then:
+\begin{align*}
+    f(x\ast x^{-1}) &= f(1_G)\\
+    f(x)\ast f(x^{-1}) &= 1_H
+\end{align*}
+\item Therefore $f(x^{-1})$ is indeed the inverse of $f(x)$ and inverse is
+    preserved.
+\begin{align*}
+    f(x\ast 1_G) &= f(x)\\
+    f(x)\ast f(1_G) &= f(x)\\
+    f(x^{-1})\ast f(x)\ast 1_H &= f(x^{-1})\ast f(x)\\
+    1_H &= f(x\ast x^{-1})\\
+    1_H &= f(1_G)
+\end{align*}
+\item Therefore identity is preserved.
+\end{proofitem}
