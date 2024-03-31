@@ -4,17 +4,31 @@
     \item Data
         \subitem Objects: a collection $\obc{}$ of objects
         \subitem Arrows: for objects $a, b\in \obc{}$, a collection
-        $\mathcal{C}(a, b)$ of arrows $a \overset{f}{\rightarrow} b$
+        $\mathcal{C}(a, b)$ of arrows $f: a\rightarrow b$. These arrows are not
+        limited to functions, even though we use function notation to denote
+        them;
     \item Structure
-        \subitem Identities: for any object $a\in\obc{}$ an identity arrow
-        $a \overset{1_a}{\rightarrow} b$
-        \subitem Composition: for any arrows
-        $a \overset{f}{\rightarrow} b \overset{g}{\rightarrow} c$, a composite arrow
-        $a \overset{g\circ f}{\rightarrow} c$
+        \subitem Identities
+        \begin{align*}
+        1_a : a \rightarrow a
+        \end{align*}
+        \subitem Composition
+        \begin{align*}
+        f: a\rightarrow b\\
+        g: b\rightarrow c\\
+        g\circ f: a\rightarrow c
+        \end{align*}
     \item Properties
-        \subitem Unit laws: for any arrow $a \overset{f}{\rightarrow} b, f\circ
-        1_a = f = 1_b \circ f$.
-        \subitem Associativity:
-        $a \overset{f}{\rightarrow} b \overset{g}{\rightarrow} c
-        \overset{h}{\rightarrow} d, (h\circ g)\circ f=h\circ (g \circ f)$.
+        \subitem Unit Laws
+        \begin{align*}
+        f: a\rightarrow b\\
+        f\circ 1_a = f = 1_b \circ f
+        \end{align*}
+        \subitem Associativity Laws
+        \begin{align*}
+            f:& a\rightarrow b\\
+            g:& b\rightarrow c\\
+            h:& c\rightarrow d\\
+            (h\circ g)\circ f=&h\circ (g \circ f)
+        \end{align*}
 \end{enumerate}

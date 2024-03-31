@@ -19,7 +19,7 @@ binary operation $\circ$. The monoid is sometimes written fully as $(M, \circ,
 \end{align*}
 
 \begin{ttta}
-Translate between the set-theory definition of monoid and the category-theory
+Translate between the set-theory definition of monoid and the category theory
 definition of monoid.
 \end{ttta}
 \begin{proofitem}
@@ -51,12 +51,16 @@ definition of monoid.
     Properties & associativity& $\rightarrow$ & associativity
     \\\hline
     \end{tabular}
-    \caption{Monoid in set theory v. category-theory}
+    \caption{Monoid in set theory v. category theory}
 \end{table}
+\begin{ttta}
+Can you fill in the following composition table for the arrows of this category?
+Does the resulting pattern remind you of anything we’ve seen in earlier
+chapters?
 
+See Table \ref{tbl:cayley}.
 \begin{table}
 \centering
-\caption{Cayley Table}
 \begin{tabular}{c|cccc}
  $\circ$ & $1$ & $f$ & $f^2$ & $f^3$ \\
  \hline
@@ -65,8 +69,11 @@ definition of monoid.
  $f^2$ & $f^2$ & $f^3$ & $1$ & $f^2$ \\
  $f^3$ & $f^3$ & $1$ & $f^2$ & $f^2$ \\
 \end{tabular}
-\caption{Looks like modular arithmetic.}
+\caption{Cayley Table}
+\label{tbl:cayley}
 \end{table}
+\end{ttta}
+\stepcounter{tttacounter}
 \begin{ttta}
 Find an inverse for each element of $\mathbb{Z}_4$ under addition. So for each $a \in
 \mathbb{Z}_4$, find $b \in \mathbb{Z}_4$ such that $a + b \equiv 0 (\mod 4)$.
@@ -78,6 +85,7 @@ Find an inverse for each element of $\mathbb{Z}_4$ under addition. So for each $
     $b\in\mathbb{Z}_4$ such that $a+b\equiv\bmod 4$.
 \item One way to do this for a small $\mathbb{Z}_n$ is with a cayley table.
 \item By looking at the addition cayley table for $\mathbb{Z}_4$, we can see that
+    \setcounter{equation}{0}
     \begin{align}
         0+0=&0+0=0\\
         1+3=&3+1=0\\
@@ -135,7 +143,7 @@ See Table \ref{tbl:group}.
     Properties & associativity& $\rightarrow$ & associativity
     \\\hline
     \end{tabular}
-    \caption{Group in set theory v. category-theory}
+    \caption{Group in set theory v. category theory}
     \label{tbl:group}
 \end{table}
 \begin{ttta}

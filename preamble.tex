@@ -4,6 +4,9 @@
 \usepackage{tikz}
 \usepackage{tikzit}
 \usepackage{titlesec}
+\usepackage{tocloft} % Provides ToC customization
+
+
 \input{sample-02.tikzstyles}
 
 % \memoto{Idris}
@@ -13,12 +16,16 @@
 { \begin{itemize}[label={}, leftmargin=2mm, itemsep=0.5mm] }
 {\end{itemize}}
 
+\newcounter{tttacounter}
+\counterwithin{tttacounter}{section} % Question counter resets with each section
 \newenvironment{ttta}{
-   \par\vspace{0.5cm}
-   \noindent\hrulefill
-   \par\vspace{0.2cm}
-   \textbf{Question:}
-   \ignorespaces
+    \par\vspace{0.5cm}
+    \noindent\hrulefill
+    \par\vspace{0.2cm}
+    \stepcounter{tttacounter} % Increment the counter
+    \textbf{\textsc{TTTA} \thetttacounter{}} % Display the counter
+    \ignorespaces
+    \addcontentsline{toc}{subsubsection}{\textsc{T} \thetttacounter} % Add to ToC
 }
 {\par\vspace{0.0cm}}
 

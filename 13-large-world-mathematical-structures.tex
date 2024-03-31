@@ -59,6 +59,7 @@ B is a function $f:A\rightarrow B$ on the underlying sets, such that
 \end{align*}
 \end{definition}
 
+\stepcounter{tttacounter}
 \begin{ttta}
 What do we need to check to show that monoids and their homomorphisms form a
 category?
@@ -84,7 +85,11 @@ category?
     &= 1 && g \text{ respects }1
 \end{align}
 \end{proofitem}
+\begin{figure}[H]
 \input{monoid}
+\caption{Monoid Category $\mathbf{Monoid}$}
+\end{figure}
+\subsection{Groups}
 \begin{ttta}
 Define group homomorphism as a function respecting the group structure. When
 dealing with groups, it is redundant to ask for the identity to be preserved.
@@ -105,8 +110,110 @@ It’s also redundant to ask for the inverses to be preserved. Prove this.
     f(x\ast 1_G) &= f(x)\\
     f(x)\ast f(1_G) &= f(x)\\
     f(x^{-1})\ast f(x)\ast 1_H &= f(x^{-1})\ast f(x)\\
-    1_H &= f(x\ast x^{-1})\\
+    1_H &= f(x^{-1}\ast x)\\
     1_H &= f(1_G)
 \end{align*}
 \item Therefore identity is preserved.
 \end{proofitem}
+
+\begin{ttta}
+Do we have to check anything else to show that groups and group homomorphisms form a category?
+\end{ttta}
+Because groups are monoids with an extra property, there is nothing to check
+because monoids already form a cateogry. In other words, the monoidal nature of
+a group is sufficient to show unitality and associativity for a category created
+from some set that is also a group.
+
+\subsection{Posets}
+\begin{ttta}
+Create a definition of an order-preserving function for posets in general by
+analogy with the structure-preserving maps we've seen already.
+\end{ttta}
+\begin{proofitem}
+\item Let $f:P\rightarrow Q$ be some function between two posets $P$ and $Q$.
+    Because $P$ and $Q$ are posets, we know that individually they both have the
+    properties reflexivity, transitivity, and antisymmetry. For $f$ to be order
+    preserving, the only condition on $f$ is
+\begin{align*}
+    x\geq_P y \implies f(x)\geq_Q f(y)
+\end{align*}
+\end{proofitem}
+
+\begin{ttta}
+Do we have to check anything to show that we have a category of posets and order-preserving functions?
+\end{ttta}
+\begin{proofitem}
+    \item To check that we have a category, we must assure unitality and
+        associativity are preserved.
+\end{proofitem}
+\begin{align*}
+    x \geq y &\implies f(x) \geq f(y) \\
+             &\implies g(f(x) \geq g(f(y)) \\
+             &\implies (g\circ f)(x) \geq (g\circ f)(y) \\
+\end{align*}
+\begin{figure}[H]
+    \begin{center}
+\input{poset}
+\end{center}
+\caption{Poset Category $\mathbf{Poset}$}
+\end{figure}
+
+\begin{ttta}
+Think again about the poset of factors of 42.
+Observe that $6 < 7$ but 6 is higher than 7 in this diagram. What two orderings
+are we considering on the same set of numbers here, and what map is it that is
+not order-preserving?
+\end{ttta}
+\begin{figure}[H]
+    \begin{center}
+        \input{42-factor}
+    \end{center}
+    \caption{42-factor lattice}
+\end{figure}
+\begin{proofitem}
+\item Let $S=\set{1,2, 3, 6, 7, 14, 21, 42}\subset \mathbb{N}$.
+\item One order is $\geq$ as defined on $\mathbb{N}$.
+    The other order is divides $\mid$, as in $a\mid b$---for example $6\mid 12$.
+    Both orders are reflexive, anti-symmetric, and transitive, as required by
+    definition.
+\item Let us consider the map $f:\mathbb{N}\rightarrow\mathbb{N}$, where $f=+1$.
+    For the ordering $\geq$, $f$ preserves ordering.
+\begin{align*}
+    f(x \geq y) =& f(x) \geq f(y)\\
+        =& x+1 \geq y+1\\
+        =& x \geq y
+\end{align*}
+Now we will show that $f$ does not preserve ordering on $\mid$ by
+counter-example.
+\begin{align*}
+    f(x \mid y) =& f(x) \mid f(y)&&\text{Let }x=7, y=14\\
+    f(7 \mid 14) =& f(7) \mid f(14)\\
+     \neq& 8 \mid 15
+\end{align*}
+Thus we have shown that $\mid$ does not preserve ordering.
+\end{proofitem}
+
+\subsection{Categories}
+\begin{ttta}
+Think of a sensible starting point for a definition of a morphism of
+categories $F: \mathbb{C} \longrightarrow \mathbb{D}$. It should map objects to
+objects and arrows to arrows, but if we start with an arrow $x \xrightarrow{f}
+y\in\mathbb{C}$ what should the source and target of $F(f)$ be in
+$\mathbb{D}$?
+\end{ttta}
+\begin{proofitem}
+    \item
+    \begin{align*}
+        f\in \mathbb{C}&: x \rightarrow y\\
+        F(f)\in \mathbb{D}&: F(x) \rightarrow F(y)
+    \end{align*}
+\end{proofitem}
+
+\begin{ttta}
+Come up with the definition of a morphism between categories, starting
+with the action of $F$ on objects and arrows. Then proceeding by making
+sure it is structure-preserving. To do this, you need to be clear what the
+structure of a category is: identities and composition. Once you've done this,
+can you check that this gives us a category of small categories and all
+morphisms between them.
+\end{ttta}

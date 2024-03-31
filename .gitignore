@@ -6,6 +6,8 @@
 *.pdf
 *.synctex.gz
 *.toc
+*.lof
+*.lot
 .direnv
 .envrc
 result
