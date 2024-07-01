@@ -53,13 +53,14 @@ $f$, and then add them.
 	\end{center}
 \end{figure}
 \begin{proofitem}
-	\item To respect addition a function $f$ must satisfy the following equation $f(m+n) =
-		f(m)+f(n)$.  Let us suppose that $f$ does respect addition and show that it
+	\item To respect addition, a function $f$ must satisfy the following equation $f(m+n) =
+		f(m)+f(n)$.  Suppose that $f$ does respect addition and use that to show respecting addition
 	implies that $f$ also respects the identity.
 	\begin{align*}
-		f(0+n) = & f(0) + f(n) \\
-		f(n) =   & f(0) + f(n) \\
-		f(0) =   & 0
+		f(m+n) = & f(0 +n)     &  & m=0                         \\
+		f(0+n) = & f(0) + f(n) &  & \text{homomorphism}         \\
+		f(n) =   & f(0) + f(n)                                  \\
+		f(0) =   & 0           &  & f\;\text{respects identity}
 	\end{align*}
 \end{proofitem}
 
@@ -98,21 +99,20 @@ $f$, and then add them.
 \end{proofitem}
 \clearpage
 \begin{ttta}
-	What do we need to check to show that monoids and their homomorphisms form a
-	category?
+	What needs to be checked to show that monoids and their homomorphisms form
+	a category?
 \end{ttta}
 \begin{proofitem}
-	\item Monoids are sets, and the arrows between them are functions. We've already
-	shown\footnote{see TTTA\ref{ttta:function-forms-category}.} that:
-	\begin{align*}
-		\text{identity function}    & \implies\text{unitality}     \\
-		\text{function composition} & \implies\text{associativity}
-	\end{align*}
-	Therefore all that remains to be shown for any set endowed with additional
-	characterisitcs is that the identity function and function composition respect
-	the additional characteristics.
+	\item To check that monoids and their homomorphisms form a category, we
+	must show that the category, call it \textbf{Mnd}, respects identity
+	and composition. Showing identity and associativity where objects are sets
+	and morphisms are functions is trivial because the universal existence of
+	the identity function and because function composition guarantees
+	associativity. Because we are declaring that all objects of \textbf{Mnd}
+	are monoids, we must check that the morphisms between objects preserve
+	structure, meaning that the morphisms are homomorphisms.
 
-	\item Let $f, g$ be monoid homomorphisms, ie they are arrows between objects in the category \textbf{Mon}.
+	\item Let $f, g$ be monoid homomorphisms, ie they are arrows between objects in the category \textbf{Mnd}.
 	\item Let $\circ$ be a binary composition operation on arrows.
 	\item Let $\ast$ be a binary composition operation on monoidal elements.
 	\setcounter{equation}{0}
@@ -147,22 +147,12 @@ $f$, and then add them.
 	We will show that the if $f$ preserves the binary operation, $f$ also
 	preserves the identity.
 	\begin{align*}
-		f(1) =                    & f(1\circ 1)                         &  & \text{def.\;of }1        \\
-		f(1)=                     & f(1)\circ f(1)                      &  & f\text{ preserves }\circ \\
-		{(f(1))}^{-1} \circ f(1)= & {(f(1))}^{-1} \circ f(1) \circ f(1) &  & \text{inverse}           \\
-		1=                        & f(1)
+		f(1) =             & f(a\circ a^{-1})    &  & \text{def.\;of\;}1         \\
+		=                  & f(a)\circ f(a^{-1}) &  & f\;\text{preserves}\;\circ \\
+		=                  & 1                   &  & \text{def.\ of inverse}    \\
+		f(a\circ a^{-1}) = & f(a)\circ f(a^{-1}) &  & f\;\text{preserves}\;\circ \\
+		f(1) =             & 1                   &  & f\;\text{preserves}\;^{-1} \\
 	\end{align*}
-	\item We will show that the if $f$ preserves the binary operation, $f$ also
-	preserves the inverse.
-	% \begin{align*}
-	% f(a\circ a^{-1}) & = f(1) \\
-	% & = 1    \\
-	% f(a\circ a^{-1})                              & = f(a)\circ f(a^{-1}) \\
-	% f(a)\circ f(a^{-1})                           & = 1                   \\
-	% {(f(a)\right)}^{-1} \circ f(a)\circ f(a^{-1}) & {(f(a))}^{-1} \circ 1 \\
-	% f(a^{-1})                                     & ={f(a)}^{-1}
-	% \end{align*}
-	\item Therefore the inverse is preserved.
 \end{proofitem}
 
 \begin{ttta}
