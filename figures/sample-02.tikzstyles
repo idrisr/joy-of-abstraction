@@ -8,3 +8,6 @@
 
 % Edge styles
 \tikzstyle{arrow}=[draw=black, fill=none, {->}]
+\tikzstyle{edge1}=[fill=none, ->]
+\tikzstyle{edge2}=[dashed, fill=none, ->, thick]
+\tikzstyle{edge3}=[fill=none, ->, thick]

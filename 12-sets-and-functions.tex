@@ -5,52 +5,56 @@ spaces and groups. Depending on the structure in question, the set is imbued
 with some additional property---an ordering, a binary operation, or a notion of
 closeness.
 \begin{quote}
-The starting point for the maps between structures is the concept of a
-function---the basic notion of a map between sets.
+	The starting point for the maps between structures is the concept of a
+	function---the basic notion of a map between sets.
 \end{quote}
 We then find a good notion of map between special structures by
 looking at maps that preserve the special properties in question.
 \begin{definition}
-Let $f, g$ be functions $A\rightarrow B$. We say $f = g$ as functions whenever
-$\forall a \in A, f(a) = g(a)$.
+	Let $f, g$ be functions $A\rightarrow B$. We say $f = g$ as functions whenever
+	$\forall a \in A, f(a) = g(a)$.
 \end{definition}
 \begin{ttta}
-How many different functions are possible between 3 inputs and 2 outputs? What
-if there were p inputs and k outputs?
-\begin{align*}
-    2^3&&\text{3 inputs, 2 outputs}\\
-    k^p&&\text{p inputs, k outputs}\\
-\end{align*}
+	How many different functions are possible between 3 inputs and 2 outputs? What
+	if there were p inputs and k outputs?
+	\begin{align*}
+		2^3 &  & \text{3 inputs, 2 outputs} \\
+		k^p &  & \text{p inputs, k outputs} \\
+	\end{align*}
 \end{ttta}
 \begin{ttta}
-How many different functions are possible between $0$ inputs and $n$ outputs.
-How many different functions are possible between $n$ inputs and $0$ outputs.
-Can you interpret it?
-\begin{align*}
-    n^0&=1&&\text{input }\varnothing\\
-    0^n&=1&&\text{output }\varnothing\\
-\end{align*}
-The way to interpret this is that when $\varnothing$ is the output set, there is
-only one function from $n$ inputs.  Each input of $n$ is mapped to $\varnothing$
-like $n_i \mapsto \varnothing$. When the input is $\varnothing$ we get an absurd
-situation where one must produce an element of the $\varnothing$ to get an output.
-There is only way to produce such an absurdity.
+	How many different functions are possible between $0$ inputs and $n$ outputs.
+	How many different functions are possible between $n$ inputs and $0$ outputs.
+	Can you interpret it?
+	\begin{align*}
+		n^0 & =1 &  & \text{input }\varnothing  \\
+		0^n & =1 &  & \text{output }\varnothing \\
+	\end{align*}
+	The way to interpret this is that when $\varnothing$ is the output set, there is
+	only one function from $n$ inputs.  Each input of $n$ is mapped to $\varnothing$
+	like $n_i \mapsto \varnothing$. When the input is $\varnothing$ we get an absurd
+	situation where one must produce an element of the $\varnothing$ to get an output.
+	There is only way to produce such an absurdity.
 \end{ttta}
 \begin{ttta}
-Show that sets and functions form a category. Check that the identity really
-behaves like an identity, both on the left and on the right, and that
-composition is associative.
+	\begin{enumerate}[label = {(\alph*)}]
+		\item Show that sets and functions form a category.
+		\item Check that the identity really behaves like an identity, both on
+		      the left and on the right.
+		\item Check that composition is
+		      associative.\label{ttta:function-forms-category}
+	\end{enumerate}
 \end{ttta}
-To form a category, there are two required properties: identity arrows and
-composition. Consider the category where sets are objects and functions are
-arrows.
+To form a category, there are two required properties: unitality and
+associativity. Consider the category \textbf{Set} where sets are objects and
+functions are arrows.
 \begin{align*}
-    (1_b \circ f)(x)&= 1_b(f(x)) &&\\
-               &= f(x) &&\text{left identity}\\
-    (f \circ 1_a)(x)&= f(1_b(x)) &&\\
-               &= f(x) &&\text{right identity}\\
-    \left((f \circ g) \circ h\right)(x) &= (f \circ g)h(x) &&\text{}\\
-    &= f(g(h(x))) &&\text{}\\
-    \left(f \circ (g \circ h)\right)(x) &= f((g\circ h)(x))\\
-    &= f(g(h(x)))&&\text{associativity}
+	(1_b \circ f)(x)                    & = 1_b(f(x))        &  &                       \\
+	                                    & = f(x)             &  & \text{left identity}  \\
+	(f \circ 1_a)(x)                    & = f(1_b(x))        &  &                       \\
+	                                    & = f(x)             &  & \text{right identity} \\
+	\left((f \circ g) \circ h\right)(x) & = (f \circ g)h(x)  &  & \text{}               \\
+	                                    & = f(g(h(x)))       &  & \text{}               \\
+	\left(f \circ (g \circ h)\right)(x) & = f((g\circ h)(x))                            \\
+	                                    & = f(g(h(x)))       &  & \text{associativity}
 \end{align*}

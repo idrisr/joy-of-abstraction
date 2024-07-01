@@ -1,8 +1,10 @@
 {
   description = "template for math proofs";
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/23.11";
-  inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.hippoid-tex.url = "github:idrisr/hippoid-tex";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/24.05";
+    flake-utils.url = "github:numtide/flake-utils";
+    hippoid-tex.url = "github:idrisr/hippoid-tex";
+  };
 
   outputs = { nixpkgs, flake-utils, hippoid-tex, ... }:
     let

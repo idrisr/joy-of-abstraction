@@ -1,219 +1,312 @@
 \section{Large worlds of mathematical structures}
+Based on sets and functions.
 \subsection{Monoids and Homomorphisms}
-Suppose some function $f: \mathbb{N} \rightarrow \mathbb{Z}$ and $f(n)=n$. This function
-$f$ respects addition in the following sense.
+Suppose some function $f: \mathbb{N} \rightarrow \mathbb{Z}$ and $f(n)=n$. This
+function $f$ respects addition in the following sense.
 \begin{align*}
-    f(m+n) = f(m) + f(n)
+	f(m+n) = f(m) + f(n)
 \end{align*}
 We can add $m+n$ first and then map it via $f$, or we can first map $m, n$ via
 $f$, and then add them.
+\begin{figure}[H]
+	\begin{center}
+		\input{figures/06-tree}
+	\end{center}
+	\caption{Homomorphism tree representation}
+\end{figure}
 
 \begin{ttta}
-Another possible function $f: \mathbb{N} \rightarrow \mathbb{Z}$ is given by
-$f(n) = 2n$. See if you can check that this also satisfies the above condition
-$f(m+n) = f(m) + f(n)$.
-\begin{align*}
-    f(m+n) =& f(m) + f(n)\\
-    2(m+n) =& 2(m) + 2(n)\\
-    2(m+n) =& 2(m+n)\\
-    m+n =& m+n
-\end{align*}
-Thus we have shown that $f$ respects addition.
+	Another possible function $f: \mathbb{N} \rightarrow \mathbb{Z}$ is given by
+	$f(n) = 2n$. See if you can check that this also satisfies the above condition
+	$f(m+n) = f(m) + f(n)$.
+	\begin{align*}
+		f(m+n) = & f(m) + f(n) \\
+		2(m+n) = & 2(m) + 2(n) \\
+		2(m+n) = & 2(m+n)      \\
+		m+n =    & m+n
+	\end{align*}
+	Thus we have shown that $f$ respects addition.
 \end{ttta}
 
 \begin{ttta}
-Show that this function
-\[
-f=\set{(0, 0), (1, 1), (2, -1), (3, 2), (4, -2), (5, 3), (6, -3), \dots}
-\]
-does not respect addition.
-\begin{align*}
-    f(1+3) =& f(1) + f(3)\\
-    f(4) =& f(1) + f(3)\\
-    -2 =& 1 + 2\\
-    -2 \neq& 3
-\end{align*}
+	Show that this function
+	\[
+		f=\set{(0, 0), (1, 1), (2, -1), (3, 2), (4, -2), (5, 3), (6, -3), \dots}
+	\]
+	does not respect addition.
+	\begin{align*}
+		f(1+3) =      & f(4)  \\
+		=             & -2    \\
+		f(1) + f(3) = & 1 + 2 \\
+		=             & 3     \\
+		3 \neq        & -2    \\
+	\end{align*}
 \end{ttta}
 
 \begin{ttta}
-Mapping into the integers is special because it turns out that respecting
-addition forces a function to respect the identity. Prove it.
+	Mapping into the integers is special because it turns out that respecting
+	addition forces a function to respect the identity. Prove it.
 \end{ttta}
+\begin{figure}[H]
+	\begin{center}
+		\input{figures/07-tree-zero}
+	\end{center}
+\end{figure}
 \begin{proofitem}
-\item To respect addition a function $f$ must satisfy the following equation $f(m+n) =
-f(m)+f(n)$.  Let us suppose that $f$ does respect addition and show that it
-implies that $f$ also respects the identity.
-\begin{align*}
-    f(0+n) =& f(0) + f(n)\\
-    f(n) =& f(0) + f(n)\\
-    f(0) =& 0
-\end{align*}
+	\item To respect addition a function $f$ must satisfy the following equation $f(m+n) =
+		f(m)+f(n)$.  Let us suppose that $f$ does respect addition and show that it
+	implies that $f$ also respects the identity.
+	\begin{align*}
+		f(0+n) = & f(0) + f(n) \\
+		f(n) =   & f(0) + f(n) \\
+		f(0) =   & 0
+	\end{align*}
 \end{proofitem}
+
+\begin{figure}[H]
+	\begin{center}
+		\input{figures/08-tree-monoid}
+	\end{center}
+\end{figure}
 \begin{definition}
-Let $A$ and $B$ be monoids, and write the identity as $1$ and the
-binary operation as $\circ$ in each case. Then a monoid homomorphism from A to
-B is a function $f:A\rightarrow B$ on the underlying sets, such that
-\begin{align*}
-    \forall x, y \in A, f(x \circ y) &= f(x) \circ f(y)&&f\text{ respects }\circ\\
-    f(1)&=1&&f\text{ respects identity}
-\end{align*}
+	Let $A$ and $B$ be monoids, and write the identity as $1$ and the
+	binary operation as $\circ$ in each case. Then a monoid homomorphism from A to
+	B is a function $f:A\rightarrow B$ on the underlying sets, such that
+	\begin{align*}
+		\forall x, y \in A, f(x \circ y) & = f(x) \circ f(y) &  & f\text{ respects }\circ    \\
+		f(1)                             & =1                &  & f\text{ respects identity}
+	\end{align*}
 \end{definition}
 
-\stepcounter{tttacounter}
+\subsubsection{Example 1}
+\begin{proofitem}
+	\item Let $M\subseteq\mathbb{Z}_3=\set{0, 1, 2}$. The monoid is $(M, +_3, 0)$.
+	\item Let $N\subseteq\mathbb{Z}=\set{2, 3, 7}$.
+	The monoid is $(N, \min, 7)$.
+	\item Lef $f: M \rightarrow N\subseteq \mathbb{Z}_3\times\mathbb{Z}=\set{(0, 7),
+			(1, 2), (2, 3)}$.
+	\begin{align*}
+		f(x\circ y) & = f(x)\circ f(y)  \\
+		f(0 +_3 3)  & = f(0)`\min` f(3) \\
+		f(3)        & = 7`\min` 1       \\
+		1           & = 1               \\
+		f(1 +_3 2)  & = f(1)`\min` f(2) \\
+		f(0)        & = 2`\min` 1       \\
+		7           & \neq 1
+	\end{align*}
+	Thus $f$ is not a monoid homomorphism.
+\end{proofitem}
+\clearpage
 \begin{ttta}
-What do we need to check to show that monoids and their homomorphisms form a
-category?
+	What do we need to check to show that monoids and their homomorphisms form a
+	category?
 \end{ttta}
 \begin{proofitem}
-\item Let $M$ be the set of monoids, $M_A, M_B, M_C, \ldots, \in M$.
-\item Let $\mathcal{C}_\text{mon}$ be a category where each object is a monoid
-    $A\in M$, and each arrow $\times$ is a mapping $A,B \in M, \times:
-    A\rightarrow B$.
-\item Let $f, g$ be composable functions, ie they are arrows between objects.
-\item Let $\circ$ be a binary composition operation on arrows.
-\item Let $\ast$ be a binary composition operation on monoidal elements.
-\item To show that monoids and their homomorphisms form a cateogry we must show
-    the properties of unitality and associativity.
-\setcounter{equation}{0}
-\begin{align}
-    (g\circ f)(x\ast y) &= g(f(x\ast y)) && \text{def. of }\circ\\
-    &= g(f(x) \ast f(y)) && f\text{ respects }\ast\\
-    &= g(f(x)) \ast g(f(y)) && g\text{ respects }\ast\\
-    &= (g\circ f)(x) \ast (g\circ f)(y) && \text{def. of }\circ\\
-    (g\circ f)(1)&= g(f(1)) && \text{def. of }\circ\\
-    &= g(1) && f \text{ respects }1\\
-    &= 1 && g \text{ respects }1
-\end{align}
+	\item Monoids are sets, and the arrows between them are functions. We've already
+	shown\footnote{see TTTA\ref{ttta:function-forms-category}.} that:
+	\begin{align*}
+		\text{identity function}    & \implies\text{unitality}     \\
+		\text{function composition} & \implies\text{associativity}
+	\end{align*}
+	Therefore all that remains to be shown for any set endowed with additional
+	characterisitcs is that the identity function and function composition respect
+	the additional characteristics.
+
+	\item Let $f, g$ be monoid homomorphisms, ie they are arrows between objects in the category \textbf{Mon}.
+	\item Let $\circ$ be a binary composition operation on arrows.
+	\item Let $\ast$ be a binary composition operation on monoidal elements.
+	\setcounter{equation}{0}
+	\begin{align*}
+		(g\circ f)(x\ast y) & = g(f(x\ast y))                    &  & \text{def.\;of }\circ         \\
+		                    & = g(f(x) \ast f(y))                &  & f\text{ respects }\ast        \\
+		                    & = g(f(x)) \ast g(f(y))             &  & g\text{ respects }\ast        \\
+		                    & = (g\circ f)(x) \ast (g\circ f)(y) &  & g\circ f\text{ respects }\ast \\
+		(g\circ f)(1)       & = g(f(1))                          &  & f\text{ respects }1           \\
+		                    & = g(1)                             &  & g \text{ respects }1          \\
+		                    & = 1                                &  & g \circ f\text{ respects }1
+	\end{align*}
 \end{proofitem}
 \begin{figure}[H]
-\input{monoid}
-\caption{Monoid Category $\mathbf{Monoid}$}
+	\begin{center}
+		\input{figures/monoid}
+	\end{center}
+	\caption{Monoid Category $\mathbf{Mnd}$}
 \end{figure}
 \subsection{Groups}
+
 \begin{ttta}
-Define group homomorphism as a function respecting the group structure. When
-dealing with groups, it is redundant to ask for the identity to be preserved.
-It’s also redundant to ask for the inverses to be preserved. Prove this.
+	Define group homomorphisms as a function respecting the group structure. When
+	dealing with groups, it is redundant to ask for the identity to be preserved.
+	It’s also redundant to ask for the inverses to be preserved. Prove this.
 \end{ttta}
 \begin{proofitem}
-\item The properties needed for a group are identity, inverse, and
-    associativity. We can show that if there exists a function $f$ which is a
-    group homomorphism, then we get inverse and identity for freebeez.
-\item Suppose $f: G \rightarrow H$ is a homomorphism between groups $G$ and $H$. Then:
-\begin{align*}
-    f(x\ast x^{-1}) &= f(1_G)\\
-    f(x)\ast f(x^{-1}) &= 1_H
-\end{align*}
-\item Therefore $f(x^{-1})$ is indeed the inverse of $f(x)$ and inverse is
-    preserved.
-\begin{align*}
-    f(x\ast 1_G) &= f(x)\\
-    f(x)\ast f(1_G) &= f(x)\\
-    f(x^{-1})\ast f(x)\ast 1_H &= f(x^{-1})\ast f(x)\\
-    1_H &= f(x^{-1}\ast x)\\
-    1_H &= f(1_G)
-\end{align*}
-\item Therefore identity is preserved.
+	\item The properties needed for a function to be a group homomorphism are the
+	preservation of group properties, namely: identity, invertibility, and
+	preservation of the binary operation.
+	\item Suppose $f: G \rightarrow H$ is a homomorphism between groups $G$ and $H$.
+	We will show that the if $f$ preserves the binary operation, $f$ also
+	preserves the identity.
+	\begin{align*}
+		f(1) =                    & f(1\circ 1)                         &  & \text{def.\;of }1        \\
+		f(1)=                     & f(1)\circ f(1)                      &  & f\text{ preserves }\circ \\
+		{(f(1))}^{-1} \circ f(1)= & {(f(1))}^{-1} \circ f(1) \circ f(1) &  & \text{inverse}           \\
+		1=                        & f(1)
+	\end{align*}
+	\item We will show that the if $f$ preserves the binary operation, $f$ also
+	preserves the inverse.
+	% \begin{align*}
+	% f(a\circ a^{-1}) & = f(1) \\
+	% & = 1    \\
+	% f(a\circ a^{-1})                              & = f(a)\circ f(a^{-1}) \\
+	% f(a)\circ f(a^{-1})                           & = 1                   \\
+	% {(f(a)\right)}^{-1} \circ f(a)\circ f(a^{-1}) & {(f(a))}^{-1} \circ 1 \\
+	% f(a^{-1})                                     & ={f(a)}^{-1}
+	% \end{align*}
+	\item Therefore the inverse is preserved.
 \end{proofitem}
 
 \begin{ttta}
-Do we have to check anything else to show that groups and group homomorphisms form a category?
+	Do we have to check anything else to show that groups and group homomorphisms form a category?
 \end{ttta}
 Because groups are monoids with an extra property, there is nothing to check
 because monoids already form a cateogry. In other words, the monoidal nature of
-a group is sufficient to show unitality and associativity for a category created
-from some set that is also a group.
+a group is sufficient to show unitality and associativity for a category
+$\mathbf{Grp}$ created from some set that is also a group.
 
 \subsection{Posets}
 \begin{ttta}
-Create a definition of an order-preserving function for posets in general by
-analogy with the structure-preserving maps we've seen already.
+	Create a definition of an order-preserving function for posets in general by
+	analogy with the structure-preserving maps we've seen already.
 \end{ttta}
 \begin{proofitem}
-\item Let $f:P\rightarrow Q$ be some function between two posets $P$ and $Q$.
-    Because $P$ and $Q$ are posets, we know that individually they both have the
-    properties reflexivity, transitivity, and antisymmetry. For $f$ to be order
-    preserving, the only condition on $f$ is
-\begin{align*}
-    x\geq_P y \implies f(x)\geq_Q f(y)
-\end{align*}
+	\item Let $f:P\rightarrow Q$ be some function between two posets $P$ and $Q$.
+	Because $P$ and $Q$ are posets, we know that individually they both have the
+	properties reflexivity, transitivity, and antisymmetry. For $f$ to be order
+	preserving, the only condition on $f$ is
+	\begin{align*}
+		x\geq_P y \implies f(x)\geq_Q f(y)
+	\end{align*}
 \end{proofitem}
 
 \begin{ttta}
-Do we have to check anything to show that we have a category of posets and order-preserving functions?
+	Do we have to check anything to show that we have a category of posets and order-preserving functions?
 \end{ttta}
 \begin{proofitem}
-    \item To check that we have a category, we must assure unitality and
-        associativity are preserved.
+	\item The arrows between posets are functions. It is always possible to create
+	identity functions and function composition (see\footnote{see TTTA\ref{ttta:function-forms-category}}), and these properties
+	automatically imply the required category properties---unitality and associativity.
+	\item Therefore the only thing to check is that the functions preserve ordering
+	between the posets.
 \end{proofitem}
+For arrows $g$ and $f$ in the category of $\mathbf{Poset}$ to preserve
+structure, the following must be true.
 \begin{align*}
-    x \geq y &\implies f(x) \geq f(y) \\
-             &\implies g(f(x) \geq g(f(y)) \\
-             &\implies (g\circ f)(x) \geq (g\circ f)(y) \\
+	x \geq y & \implies f(x) \geq f(y)                   \\
+	         & \implies g(f(x)) \geq g(f(y))             \\
+	         & \implies (g\circ f)(x) \geq (g\circ f)(y) \\
 \end{align*}
 \begin{figure}[H]
-    \begin{center}
-\input{poset}
-\end{center}
-\caption{Poset Category $\mathbf{Poset}$}
+	\begin{center}
+		\input{figures/poset}
+	\end{center}
+	\caption{Poset Category $\mathbf{Poset}$}
 \end{figure}
 
 \begin{ttta}
-Think again about the poset of factors of 42.
-Observe that $6 < 7$ but 6 is higher than 7 in this diagram. What two orderings
-are we considering on the same set of numbers here, and what map is it that is
-not order-preserving?
+	Think again about the poset of factors of 42.
+	Observe that $6 < 7$ but 6 is higher than 7 in this diagram. What two orderings
+	are we considering on the same set of numbers here, and what map is it that is
+	not order-preserving?
 \end{ttta}
 \begin{figure}[H]
-    \begin{center}
-        \input{42-factor}
-    \end{center}
-    \caption{42-factor lattice}
+	\begin{center}
+		\input{figures/42-factor}
+	\end{center}
+	\caption{42-factor lattice}
 \end{figure}
 \begin{proofitem}
-\item Let $S=\set{1,2, 3, 6, 7, 14, 21, 42}\subset \mathbb{N}$.
-\item One order is $\geq$ as defined on $\mathbb{N}$.
-    The other order is divides $\mid$, as in $a\mid b$---for example $6\mid 12$.
-    Both orders are reflexive, anti-symmetric, and transitive, as required by
-    definition.
-\item Let us consider the map $f:\mathbb{N}\rightarrow\mathbb{N}$, where $f=+1$.
-    For the ordering $\geq$, $f$ preserves ordering.
-\begin{align*}
-    f(x \geq y) =& f(x) \geq f(y)\\
-        =& x+1 \geq y+1\\
-        =& x \geq y
-\end{align*}
-Now we will show that $f$ does not preserve ordering on $\mid$ by
-counter-example.
-\begin{align*}
-    f(x \mid y) =& f(x) \mid f(y)&&\text{Let }x=7, y=14\\
-    f(7 \mid 14) =& f(7) \mid f(14)\\
-     \neq& 8 \mid 15
-\end{align*}
-Thus we have shown that $\mid$ does not preserve ordering.
+	\item Let $S=\set{1,2, 3, 6, 7, 14, 21, 42}\subset \mathbb{N}$.
+	\item One order is $\geq$ as defined on $\mathbb{N}$.
+	The other order is divides $\mid$, as in $a\mid b$---for example $6\mid 12$.
+	Both orders are reflexive, anti-symmetric, and transitive, as required by
+	definition.
+	\item Let us consider the map $f:\mathbb{N}\rightarrow\mathbb{N}$, where $f=+1$.
+	For the ordering $\geq$, $f$ preserves ordering.
+	\begin{align*}
+		f(x \geq y) = & f(x) \geq f(y) \\
+		=             & x+1 \geq y+1   \\
+		=             & x \geq y
+	\end{align*}
+	Now we will show that $f$ does not preserve ordering on $\mid$ by
+	counter-example.
+	\begin{align*}
+		f(x \mid y) =  & f(x) \mid f(y)  &  & \text{Let }x=7, y=14 \\
+		f(7 \mid 14) = & f(7) \mid f(14)                           \\
+		\neq           & 8 \mid 15
+	\end{align*}
+	Thus we have shown that $\mid$ does not preserve ordering.
 \end{proofitem}
 
 \subsection{Categories}
 \begin{ttta}
-Think of a sensible starting point for a definition of a morphism of
-categories $F: \mathbb{C} \longrightarrow \mathbb{D}$. It should map objects to
-objects and arrows to arrows, but if we start with an arrow $x \xrightarrow{f}
-y\in\mathbb{C}$ what should the source and target of $F(f)$ be in
-$\mathbb{D}$?
+	Think of a sensible starting point for a definition of a morphism of
+	categories $F: \mathbb{C} \longrightarrow \mathbb{D}$. It should map objects to
+	objects and arrows to arrows, but if we start with an arrow $f: x \rightarrow
+		y\in\mathbb{C}$ what should the source and target of $F(f)$ be in
+	$\mathbb{D}$?
 \end{ttta}
 \begin{proofitem}
-    \item
-    \begin{align*}
-        f\in \mathbb{C}&: x \rightarrow y\\
-        F(f)\in \mathbb{D}&: F(x) \rightarrow F(y)
-    \end{align*}
+	\item
+	\begin{align*}
+		f\in \mathbb{C}    & : x \rightarrow y       \\
+		F(f)\in \mathbb{D} & : F(x) \rightarrow F(y)
+	\end{align*}
 \end{proofitem}
 
+\begin{definition}
+	A category is called small if its objects form a set (not a large collection)
+	and its morphisms also form a set.
+\end{definition}
 \begin{ttta}
-Come up with the definition of a morphism between categories, starting
-with the action of $F$ on objects and arrows. Then proceeding by making
-sure it is structure-preserving. To do this, you need to be clear what the
-structure of a category is: identities and composition. Once you've done this,
-can you check that this gives us a category of small categories and all
-morphisms between them.
+	Come up with the definition of a morphism between categories, starting with the
+	action of $F$ on objects and arrows. Then proceed by making sure it is
+	structure-preserving. To do this, you need to be clear what the structure of a
+	category is: identities and composition. Once you've done this, can you check
+	that this gives us a category of small categories and all morphisms between
+	them.
 \end{ttta}
+\begin{figure}[H]
+	\begin{center}
+		\input{figures/category}
+	\end{center}
+	\caption{Category and Functor}
+\end{figure}
+\begin{definition}
+	A morphism between categories $\mathbb{C}$ and $\mathbb{D}$ needs to map all
+	data elements in $\mathbb{C}$ to $\mathbb{D}$. The data elements consist of
+	arrows and objects.
+	By definition, all the objects in $\mathbb{D}$ will have an identity arrow, and
+	any arrows $f:a\rightarrow b, g:b\rightarrow c\in\mathbb{D}$ will compose
+	such that $g\circ f:a\rightarrow c$.
+\end{definition}
+\begin{proofitem}
+	\item $F$ must preserve identity-structure such that
+	\begin{align*}
+		f \circ 1_x =    & f                 \\
+		F(f \circ 1_x) = & F(f) \circ F(1_x) \\
+		=                & F(f) \circ 1_y    \\
+		=                & F(f)              \\
+		1 \circ f =      & f                 \\
+		F(1 \circ f) =   & F(1) \circ F(f)   \\
+		=                & 1 \circ F(f)      \\
+		=                & F(f)
+	\end{align*}
+	For an arrow $f: x \rightarrow y$ in category $\mathbb{C}$.
+	\begin{align*}
+		f \circ 1_x =       & f        &  & \text{Identity Law in Category C}    \\
+		F(f \circ 1_x) =    & F(f)     &  & \text{Applying the Functor F}        \\
+		F(f) \circ F(1_x) = & F(f)     &  & \text{Functor Preserves Composition} \\
+		F(1_x) =            & 1_{F(x)}
+	\end{align*}
+	incomplete\ldots wait till the functor chapter
+\end{proofitem}

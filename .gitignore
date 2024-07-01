@@ -8,6 +8,8 @@
 *.toc
 *.lof
 *.lot
+*.bbl
+*.blg
 .direnv
 .envrc
 result

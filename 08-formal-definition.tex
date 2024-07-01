@@ -1,34 +1,37 @@
 \setcounter{section}{7}
-\section{Formal Definition of a Category}
-\begin{enumerate}
-    \item Data
-        \subitem Objects: a collection $\obc{}$ of objects
-        \subitem Arrows: for objects $a, b\in \obc{}$, a collection
+\section{Categories, the Definition}
+\begin{definition}
+    The data in a category consists of objects and arrows.
+    \begin{enumerate}
+    \item Objects: a collection $\obc{}$ of objects
+        \item Arrows: for objects $a, b\in \obc{}$, a collection
         $\mathcal{C}(a, b)$ of arrows $f: a\rightarrow b$. These arrows are not
         limited to functions, even though we use function notation to denote
         them;
-    \item Structure
-        \subitem Identities
-        \begin{align*}
-        1_a : a \rightarrow a
-        \end{align*}
-        \subitem Composition
-        \begin{align*}
-        f: a\rightarrow b\\
-        g: b\rightarrow c\\
-        g\circ f: a\rightarrow c
-        \end{align*}
-    \item Properties
-        \subitem Unit Laws
-        \begin{align*}
-        f: a\rightarrow b\\
-        f\circ 1_a = f = 1_b \circ f
-        \end{align*}
-        \subitem Associativity Laws
-        \begin{align*}
-            f:& a\rightarrow b\\
-            g:& b\rightarrow c\\
-            h:& c\rightarrow d\\
-            (h\circ g)\circ f=&h\circ (g \circ f)
-        \end{align*}
-\end{enumerate}
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+The structure in a category consists of identities and composition.
+\begin{align*}
+1_a : a \rightarrow a&&\text{identity}\\
+f: a\rightarrow b&&\text{composition}\\
+g: b\rightarrow c\\
+g\circ f: a\rightarrow c
+\end{align*}
+\end{definition}
+\begin{definition}
+The properties in a category consists of unitality and associativity.
+\begin{align*}
+f: a\rightarrow b\\
+f\circ 1_a = f = 1_b \circ f\\
+    f:& a\rightarrow b\\
+    g:& b\rightarrow c\\
+    h:& c\rightarrow d\\
+    (h\circ g)\circ f=&h\circ (g \circ f)
+\end{align*}
+\end{definition}
+For a category to really be a category, there are seemingly four requirements:
+identity arrows, composition, unitality, and associativity. But notice that the
+unitality property requires identity arrows, and the associativity property
+requires composition. So there are two properties, and both will fail if the
+precondition is not met.
